@@ -26,3 +26,16 @@ Constraints:
 calls[i] === "call"
 Solved this problem
 */
+const createCounter = (n) => {
+  let count = n;
+  return () => count++;
+};
+
+const n = -2;
+const counter = createCounter(n);
+
+console.log(counter()); // -2
+console.log(counter()); // -1
+console.log(counter()); // 0
+console.log(counter()); // 1
+console.log(counter()); // 2
