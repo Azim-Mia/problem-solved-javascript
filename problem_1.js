@@ -32,3 +32,10 @@ Constraints:
 
 solve now...
 */
+const createHelloWorld =()=>{
+  return ()=>{
+    console.log('Hello World')
+  }
+}
+const exiqute =createHelloWorld()
+console.log(exiqute())
