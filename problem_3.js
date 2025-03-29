@@ -23,3 +23,40 @@ Input: func = () => expect(5).notToBe(null)
 Output: {"value": true}
 Explanation: 5 !== null so this expression returns true.
 */
+function expect(val) {
+    return {
+        toBe: function(expected) {
+            if (val === expected) {
+                return true;
+            } else {
+                throw new Error("Not Equal");
+            }
+        },
+        notToBe: function(expected) {
+            if (val !== expected) {
+                return true;
+            } else {
+                throw new Error("Equal");
+            }
+        }
+    };
+}
+
+// Example usage:
+try {
+    console.log({ value: expect(5).toBe(5) }); // { value: true }
+} catch (error) {
+    console.log({ error: error.message });
+}
+
+try {
+    console.log({ value: expect(5).toBe(null) });
+} catch (error) {
+    console.log({ error: error.message }); // { error: "Not Equal" }
+}
+
+try {
+    console.log({ value: expect(5).notToBe(null) }); // { value: true }
+} catch (error) {
+    console.log({ error: error.message });
+}
